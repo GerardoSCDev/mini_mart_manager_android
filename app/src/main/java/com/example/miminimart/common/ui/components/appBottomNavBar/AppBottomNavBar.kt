@@ -24,10 +24,12 @@ import com.example.miminimart.common.ui.colors.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AppBottomNavBar(onSelected: (AppScreenOptions) -> Unit) {
+fun AppBottomNavBar(
+    selected: AppScreenOptions,
+    onSelected: (AppScreenOptions) -> Unit
+) {
 
     val appColors = AppTheme.colors
-    var screenSelected by remember { mutableStateOf(AppScreenOptions.DASHBOARD) }
 
     Surface(
         modifier = Modifier
@@ -51,52 +53,32 @@ fun AppBottomNavBar(onSelected: (AppScreenOptions) -> Unit) {
             AppBottomNavBarButton(
                 title = "Panel",
                 iconRes = R.drawable.ic_bottom_nav_bar_dashboard,
-                isSelected = screenSelected == AppScreenOptions.DASHBOARD,
-                onClick = {
-                    screenSelected = AppScreenOptions.DASHBOARD
-                    onSelected(AppScreenOptions.DASHBOARD)
-                }
+                isSelected = selected == AppScreenOptions.DASHBOARD,
+                onClick = { onSelected(AppScreenOptions.DASHBOARD) }
             )
 
             AppBottomNavBarButton(
                 title = "Inventario",
                 iconRes = R.drawable.ic_bottom_nav_bar_inventory,
-                isSelected = screenSelected == AppScreenOptions.INVENTORY,
-                onClick = {
-                    screenSelected = AppScreenOptions.INVENTORY
-                    onSelected(AppScreenOptions.INVENTORY)
-                }
+                isSelected = selected == AppScreenOptions.INVENTORY,
+                onClick = { onSelected(AppScreenOptions.INVENTORY) }
             )
 
             AppBottomNavBarButton(
                 title = "Ventas",
                 iconRes = R.drawable.ic_bottom_nav_bar_sell,
-                isSelected = screenSelected == AppScreenOptions.SELL,
-                onClick = {
-                    screenSelected = AppScreenOptions.SELL
-                    onSelected(AppScreenOptions.SELL)
-                }
+                isSelected = selected == AppScreenOptions.SELL,
+                onClick = { onSelected(AppScreenOptions.SELL) }
             )
 
             AppBottomNavBarButton(
                 title = "Configuracion",
                 iconRes = R.drawable.ic_bottom_nav_bar_config,
-                isSelected = screenSelected == AppScreenOptions.CONFIG,
-                onClick = {
-                    screenSelected = AppScreenOptions.CONFIG
-                    onSelected(AppScreenOptions.CONFIG)
-                }
+                isSelected = selected == AppScreenOptions.CONFIG,
+                onClick = { onSelected(AppScreenOptions.CONFIG) }
             )
         }
     }
-}
-
-@Preview
-@Composable
-fun AppBottomNavBarPreview() {
-    AppBottomNavBar(
-        onSelected = {}
-    )
 }
 
 @Preview(showSystemUi = true)
@@ -107,12 +89,10 @@ fun AppBottomNavBarPreviewDevice() {
 
     Scaffold(
         bottomBar = { AppBottomNavBar(
-            onSelected = { option ->
-                screenSelected = option
-            }
+            selected = screenSelected,
+            onSelected = { screenSelected = it }
         ) }
     ) {
-
         Text(
             text = screenSelected.name,
             modifier = Modifier.padding(it)
