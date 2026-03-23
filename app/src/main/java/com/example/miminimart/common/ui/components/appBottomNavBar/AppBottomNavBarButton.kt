@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.miminimart.common.ui.colors.AppTheme
+import com.example.miminimart.common.ui.theme.AppTheme
 
 @Composable
 fun AppBottomNavBarButton(title: String, @DrawableRes iconRes: Int, isSelected: Boolean, onClick: () -> Unit) {

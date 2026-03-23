@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.miminimart.R
-import com.example.miminimart.common.ui.colors.AppTheme
+import com.example.miminimart.common.ui.theme.AppTheme
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -41,7 +41,7 @@ fun AppBottomNavBar(
             1.dp,
             appColors.border
         ),
-        shape = RoundedCornerShape(25.dp)
+        shape = RoundedCornerShape(25),
     ) {
 
         Row(

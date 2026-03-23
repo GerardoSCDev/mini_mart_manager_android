@@ -3,6 +3,7 @@ package com.example.miminimart.modules.main.view
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -24,6 +25,7 @@ fun MainView() {
     var screenSelected by remember { mutableStateOf(AppScreenOptions.DASHBOARD) }
 
     Scaffold(
+        modifier = Modifier.statusBarsPadding(),
         bottomBar = { AppBottomNavBar(
             selected = screenSelected,
             onSelected = { screenSelected = it }
@@ -36,7 +38,7 @@ fun MainView() {
         )
         {
             when (screenSelected) {
-                AppScreenOptions.DASHBOARD -> DashboardView()
+                AppScreenOptions.DASHBOARD -> DashboardView(padding)
                 AppScreenOptions.INVENTORY -> InventoryView()
                 AppScreenOptions.SELL -> SellView()
                 AppScreenOptions.CONFIG -> ConfigView()

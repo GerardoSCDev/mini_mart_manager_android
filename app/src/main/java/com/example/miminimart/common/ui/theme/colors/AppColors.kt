@@ -1,4 +1,4 @@
-package com.example.miminimart.common.ui.colors
+package com.example.miminimart.common.ui.theme.colors
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
