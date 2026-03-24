@@ -14,7 +14,8 @@ data class AppSize(
     val borderWith: Dp,
     val iconSize: Dp,
 
-    val titleFont: TextUnit
+    val titleFont: TextUnit,
+    val textFieldFont: TextUnit
 )
 
 val AppConfigSize = AppSize(
@@ -23,5 +24,6 @@ val AppConfigSize = AppSize(
     paddingDefault = 10.dp,
     borderWith = 1.dp,
     iconSize = 24.dp,
-    titleFont = 14.sp
+    titleFont = 14.sp,
+    textFieldFont = 14.sp
 )
